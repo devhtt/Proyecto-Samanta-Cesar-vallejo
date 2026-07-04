@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard · Juegos Fonológicos</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="page-bg">
+    <div class="card-shell">
+
+      <!-- TOP NAV -->
+      <header class="topnav">
+        <!-- Reemplaza esta imagen por icon.png (logo de la universidad) -->
+        <img src="icon.png" alt="Logo universidad" class="brand-logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%233F6B3C%22/><text x=%2250%22 y=%2260%22 font-size=%2240%22 text-anchor=%22middle%22 fill=%22white%22 font-family=%22sans-serif%22>U</text></svg>'">
+
+        <nav class="main-nav">
+          <a href="#" class="nav-item active" data-section="dashboard">Dashboard</a>
+          <a href="#" class="nav-item" data-section="preparar">Preparar</a>
+          <a href="#" class="nav-item" data-section="ensenar">Enseñar</a>
+          <a href="#" class="nav-item" data-section="evaluar">Evaluar</a>
+          <a href="#" class="nav-item" data-section="monitorear">Monitorear</a>
+        </nav>
+
+        <div class="nav-actions">
+          <button class="icon-btn" aria-label="Favoritos">
+            <svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-10-9.3C.4 8.3 2 4.8 5.4 4.1 7.7 3.6 10 4.7 12 7c2-2.3 4.3-3.4 6.6-2.9 3.4.7 5 4.2 3.4 7.6C19.5 16.4 12 21 12 21z"/></svg>
+          </button>
+          <button class="icon-btn badge-btn" aria-label="Mensajes">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16v12H7l-3 3V4z"/></svg>
+            <span class="dot dot-red">9</span>
+          </button>
+          <div class="avatar-wrap" id="profileBtn">
+            <div class="avatar avatar-user" id="profileAvatar"></div>
+            <svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+        </div>
+      </header>
+
+      <!-- MAIN CONTENT -->
+      <main class="content">
+
+        <!-- SECCIÓN DASHBOARD -->
+        <section class="section-view active" id="dashboard-section">
+
+        <div class="content-toprow">
+          <h1 class="title">Dashboard</h1>
+
+          <div class="class-selector">
+            <svg viewBox="0 0 24 24" class="class-icon"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18 4.5 9 0 0 1 0-18z"/></svg>
+            <span>Clase A</span>
+            <svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+
+          <div class="student-stack">
+            <span class="stud-avatar sa1"></span>
+            <span class="stud-avatar sa2"></span>
+            <span class="stud-avatar sa3"></span>
+            <span class="stud-avatar sa4"></span>
+            <span class="stud-more">+8</span>
+          </div>
+
+          <div class="spacer"></div>
+
+          <div class="alerts">
+            <svg viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 11-14h-7l0-6z"/></svg>
+            <span>Alertas</span>
+            <span class="pill pill-yellow" id="alert-yellow-count">6</span>
+            <span class="pill pill-red" id="alert-red-count">3</span>
+          </div>
+
+          <button class="icon-btn" aria-label="Más opciones">
+            <svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg>
+          </button>
+        </div>
+
+        <!-- SUMMARY ROW -->
+        <div class="summary-row">
+
+          <!-- Overall panel -->
+          <div class="panel overall-panel">
+            <div class="stat-block">
+              <p class="stat-label">Puntaje General<br>de la Clase</p>
+              <p class="stat-value" id="dashboard-class-score">--</p>
+              <p class="stat-foot" id="dashboard-class-average">Promedio de grado<br>--</p>
+            </div>
+
+            <div class="stat-block">
+              <p class="stat-label">Juegos<br>Creados</p>
+              <p class="stat-value" id="dashboard-games-assigned">--</p>
+              <p class="stat-foot" id="dashboard-games-average">Basado en 5 juegos creados</p>
+            </div>
+
+            <!-- wedge widgets -->
+            <svg class="widget trophy-widget" viewBox="0 0 140 140">
+              <path class="wedge wedge-cup-l" d="M70 70 L30 30 A56 56 0 0 0 70 126 Z"/>
+              <path class="wedge wedge-cup-r" d="M70 70 L110 30 A56 56 0 0 1 70 126 Z"/>
+              <path class="wedge wedge-cup-t" d="M70 70 L30 30 A56 56 0 0 1 110 30 Z"/>
+              <circle class="face-plate" cx="70" cy="52" r="17"/>
+              <path class="handle handle-l" d="M28 55 a16 16 0 0 0 0 32"/>
+              <path class="handle handle-r" d="M112 55 a16 16 0 0 1 0 32"/>
+              <rect class="stem" x="64" y="100" width="12" height="14" rx="2"/>
+              <rect class="base" x="46" y="114" width="48" height="10" rx="4"/>
+            </svg>
+
+            <svg class="widget bubbles-widget" viewBox="0 0 140 140">
+              <circle class="bub b1" cx="70" cy="70" r="30"/>
+              <circle class="bub b2" cx="30" cy="45" r="12"/>
+              <circle class="bub b3" cx="108" cy="40" r="9"/>
+              <circle class="bub b4" cx="112" cy="80" r="14"/>
+              <circle class="bub b5" cx="35" cy="95" r="10"/>
+              <circle class="bub b6" cx="65" cy="115" r="8"/>
+              <circle class="bub b7" cx="95" cy="112" r="6"/>
+              <circle class="bub b8" cx="20" cy="70" r="6"/>
+            </svg>
+          </div>
+
+          <!-- 3 game cards -->
+          <div class="game-card game-forest" id="dashboard-game-forest">
+            <div class="game-icon-badge">
+              <svg viewBox="0 0 60 60"><circle cx="30" cy="20" r="16"/><rect x="26" y="34" width="8" height="18" rx="2"/></svg>
+            </div>
+            <p class="game-count" id="game-forest-count">--</p>
+            <p class="game-sub" id="game-forest-sub">--</p>
+            <p class="game-name">El Bosque de<br>las Sílabas</p>
+            <p class="game-foot" id="game-forest-foot">Promedio de grado:<br>--</p>
+          </div>
+
+          <div class="game-card game-island" id="dashboard-game-island">
+            <div class="game-icon-badge">
+              <svg viewBox="0 0 60 60"><path d="M8 40 Q20 30 30 40 T52 40" fill="none"/><circle cx="30" cy="20" r="10"/></svg>
+            </div>
+            <p class="game-count" id="game-island-count">--</p>
+            <p class="game-sub" id="game-island-sub">--</p>
+            <p class="game-name">La Isla de<br>los Sonidos</p>
+            <p class="game-foot" id="game-island-foot">Promedio de grado:<br>--</p>
+          </div>
+
+          <div class="game-card game-wizard" id="dashboard-game-wizard">
+            <div class="game-icon-badge">
+              <svg viewBox="0 0 60 60"><path d="M30 8 L34 24 L30 40" stroke-width="4" fill="none"/><circle cx="30" cy="6" r="4"/></svg>
+            </div>
+            <p class="game-count" id="game-wizard-count">--</p>
+            <p class="game-sub" id="game-wizard-sub">--</p>
+            <p class="game-name">El Mago de<br>las Rimas</p>
+            <p class="game-foot" id="game-wizard-foot">Promedio de grado:<br>--</p>
+          </div>
+
+        </div>
+
+        <!-- TABLE SECTION -->
+        <section class="table-section">
+          <div class="table-header-row">
+            <h2>Progreso en Juegos Fonológicos</h2>
+            <div class="table-header-links">
+              <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="12" y1="16" x2="12" y2="11"/><circle cx="12" cy="8" r="1"/></svg> Objetivos de Aprendizaje</span>
+              <span class="muted">Todos los Grupos</span>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <div class="t-row t-head">
+              <span class="t-name">Nombre <svg class="sort" viewBox="0 0 24 24"><path d="M6 15l6-6 6 6"/></svg></span>
+              <span>Juegos Completados</span>
+              <span>Puntaje Promedio <svg class="sort" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
+              <span>Necesita Refuerzo</span>
+              <span>En Progreso</span>
+              <span>Dominado</span>
+            </div>
+
+            <div class="t-row row-red" id="student-row-1">
+              <span class="t-name"><span class="mini-avatar ma1"></span><span class="student-name">Mateo Ríos</span></span>
+              <span class="student-games">-- / --</span>
+              <span class="score-cell"><span class="score-bar bar-red" style="width:0%"></span><span class="score-num">--</span></span>
+              <span><span class="chip chip-red student-need">--</span></span>
+              <span><span class="chip chip-yellow student-progress">--</span></span>
+              <span><span class="chip chip-green student-mastered">--</span></span>
+            </div>
+
+            <div class="t-row row-yellow" id="student-row-2">
+              <span class="t-name"><span class="mini-avatar ma2"></span><span class="student-name">Valentina Ruiz</span></span>
+              <span class="student-games">-- / --</span>
+              <span class="score-cell"><span class="score-bar bar-yellow" style="width:0%"></span><span class="score-num">--</span></span>
+              <span><span class="chip chip-red student-need">--</span></span>
+              <span><span class="chip chip-yellow student-progress">--</span></span>
+              <span><span class="chip chip-green student-mastered">--</span></span>
+            </div>
+
+            <div class="t-row row-green" id="student-row-3">
+              <span class="t-name"><span class="mini-avatar ma3"></span><span class="student-name">Sebastián Coya</span></span>
+              <span class="student-games">-- / --</span>
+              <span class="score-cell"><span class="score-bar bar-green" style="width:0%"></span><span class="score-num">--</span></span>
+              <span><span class="chip chip-red student-need">--</span></span>
+              <span><span class="chip chip-yellow student-progress">--</span></span>
+              <span><span class="chip chip-green student-mastered">--</span></span>
+            </div>
+          </div>
+        </section>
+        </section>
+
+        <!-- SECCIÓN PREPARAR -->
+        <section class="section-view" id="preparar-section">
+          <div class="content-toprow">
+            <h1 class="title">Preparar</h1>
+            <p class="subtitle">Diseña y configura los juegos fonológicos para tu clase</p>
+          </div>
+
+          <div class="summary-row">
+            <div class="panel overall-panel">
+              <div class="stat-block">
+                <p class="stat-label">Juegos<br>Creados</p>
+                <p class="stat-value">12</p>
+                <p class="stat-foot">Este semestre</p>
+              </div>
+
+              <div class="stat-block">
+                <p class="stat-label">Plantillas<br>Disponibles</p>
+                <p class="stat-value">8</p>
+                <p class="stat-foot">Listas para usar</p>
+              </div>
+
+              <svg class="widget trophy-widget" viewBox="0 0 140 140">
+                <path class="wedge wedge-cup-l" d="M70 70 L30 30 A56 56 0 0 0 70 126 Z"/>
+                <path class="wedge wedge-cup-r" d="M70 70 L110 30 A56 56 0 0 1 70 126 Z"/>
+                <path class="wedge wedge-cup-t" d="M70 70 L30 30 A56 56 0 0 1 110 30 Z"/>
+                <circle class="face-plate" cx="70" cy="52" r="17"/>
+                <path class="handle handle-l" d="M28 55 a16 16 0 0 0 0 32"/>
+                <path class="handle handle-r" d="M112 55 a16 16 0 0 1 0 32"/>
+                <rect class="stem" x="64" y="100" width="12" height="14" rx="2"/>
+                <rect class="base" x="46" y="114" width="48" height="10" rx="4"/>
+              </svg>
+            </div>
+
+            <div class="game-card game-forest">
+              <div class="game-icon-badge">
+                <svg viewBox="0 0 60 60"><path d="M30 15L40 35H20Z"/><rect x="26" y="35" width="8" height="15" rx="2"/></svg>
+              </div>
+              <p class="game-count">Crear Nuevo</p>
+              <p class="game-name">Juego<br>Fonológico</p>
+              <p class="game-foot">Desde plantilla</p>
+            </div>
+
+            <div class="game-card game-island">
+              <div class="game-icon-badge">
+                <svg viewBox="0 0 60 60"><rect x="10" y="20" width="40" height="25" rx="4"/><circle cx="20" cy="16" r="3"/></svg>
+              </div>
+              <p class="game-count">Importar</p>
+              <p class="game-name">Juego<br>Existente</p>
+              <p class="game-foot">De archivo</p>
+            </div>
+
+            <div class="game-card game-wizard">
+              <div class="game-icon-badge">
+                <svg viewBox="0 0 60 60"><path d="M30 10L40 25L50 45H10L20 25Z"/><circle cx="30" cy="35" r="4"/></svg>
+              </div>
+              <p class="game-count">Mi Biblioteca</p>
+              <p class="game-name">Mis<br>Plantillas</p>
+              <p class="game-foot">Personalizadas</p>
+            </div>
+          </div>
+
+          <section class="table-section">
+            <div class="table-header-row">
+              <h2>Mis Juegos Creados</h2>
+            </div>
+
+            <div class="table-wrap">
+              <div class="t-row t-head">
+                <span class="t-name">Nombre del Juego</span>
+                <span>Tipo</span>
+                <span>Estudiantes</span>
+                <span>Estado</span>
+                <span>Acciones</span>
+              </div>
+
+              <div class="t-row row-green">
+                <span class="t-name"><span class="mini-avatar ma1"></span>Ritmo de Sílabas</span>
+                <span>Silabación</span>
+                <span>24</span>
+                <span><span class="chip chip-green">Activo</span></span>
+                <span><svg viewBox="0 0 24 24" style="width:18px;height:18px;"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></span>
+              </div>
+
+              <div class="t-row row-yellow">
+                <span class="t-name"><span class="mini-avatar ma2"></span>Sopas Fonéticas</span>
+                <span>Identificación</span>
+                <span>18</span>
+                <span><span class="chip chip-yellow">Borrador</span></span>
+                <span><svg viewBox="0 0 24 24" style="width:18px;height:18px;"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></span>
+              </div>
+
+              <div class="t-row row-red">
+                <span class="t-name"><span class="mini-avatar ma3"></span>Crucigrama Sonoro</span>
+                <span>Mezcla</span>
+                <span>12</span>
+                <span><span class="chip chip-red">Pendiente</span></span>
+                <span><svg viewBox="0 0 24 24" style="width:18px;height:18px;"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></span>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <!-- SECCIÓN ENSEÑAR -->
+        <section class="section-view" id="ensenar-section">
+          <div class="content-toprow">
+            <h1 class="title">Enseñar</h1>
+            <p class="subtitle">Gestiona lecciones interactivas con tus estudiantes</p>
+          </div>
+
+          <div class="teach-jungle-wrap">
+            <span class="leaf leaf-1"></span>
+            <span class="leaf leaf-2"></span>
+            <span class="leaf leaf-3"></span>
+
+            <div class="teach-skills-row">
+              <button class="skill-orb orb-listen">
+                <span class="orb-badge">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2C8.5 6 7 8.5 7 11a5 5 0 0 0 10 0c0-2.5-1.5-5-5-9z"/>
+                    <path d="M12 22c-4-4-2-7 0-9 2 2 4 5 0 9z" />
+                  </svg>
+                </span>
+                <span class="orb-circle">
+                  <svg viewBox="0 0 100 100"><ellipse cx="50" cy="45" rx="16" ry="20" fill="none" stroke="#fff" stroke-width="5"/><ellipse cx="50" cy="48" rx="8" ry="12" fill="#fff"/></svg>
+                </span>
+                <span class="orb-label">Escuchar</span>
+              </button>
+
+              <button class="skill-orb orb-see">
+                <span class="orb-circle">
+                  <svg viewBox="0 0 100 100"><path d="M20 50 Q50 25 80 50 Q50 75 20 50Z" fill="#fff"/><circle cx="50" cy="50" r="9" fill="#F6AC2E"/></svg>
+                </span>
+                <span class="orb-label">Ver</span>
+              </button>
+
+              <button class="skill-orb orb-speak">
+                <span class="orb-badge orb-badge-hot">Top</span>
+                <span class="orb-circle">
+                  <svg viewBox="0 0 100 100"><path d="M30 38 Q50 20 70 38 L70 62 Q50 80 30 62Z" fill="#fff"/><circle cx="50" cy="50" r="6" fill="#F16A50"/></svg>
+                </span>
+                <span class="orb-label">Hablar</span>
+              </button>
+
+              <button class="skill-orb orb-vocab">
+                <span class="orb-circle">
+                  <svg viewBox="0 0 100 100"><rect x="25" y="30" width="50" height="40" rx="8" fill="#fff"/><path d="M35 48 H65" stroke="#FFD835" stroke-width="5" stroke-linecap="round"/><path d="M35 58 H55" stroke="#FFD835" stroke-width="5" stroke-linecap="round"/></svg>
+                </span>
+                <span class="orb-label">Vocabulario</span>
+              </button>
+
+              <button class="skill-orb orb-words">
+                <span class="orb-circle">
+                  <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="18" fill="#fff"/><path d="M42 50 H58" stroke="#8B7FD1" stroke-width="5" stroke-linecap="round"/></svg>
+                </span>
+                <span class="orb-label">Palabras</span>
+              </button>
+            </div>
+
+            <div class="teach-cards-row">
+              <div class="teach-illustr-card card-mascot">
+                <span class="card-badge">Nivel 5 · Premium</span>
+                <div class="card-illustration">
+                  <svg viewBox="0 0 120 120">
+                    <circle cx="60" cy="55" r="34" fill="#F6AC2E"/>
+                    <circle cx="46" cy="48" r="10" fill="#fff"/><circle cx="74" cy="48" r="10" fill="#fff"/>
+                    <circle cx="46" cy="48" r="4" fill="#233524"/><circle cx="74" cy="48" r="4" fill="#233524"/>
+                    <path d="M50 66 Q60 74 70 66" stroke="#233524" stroke-width="3" fill="none" stroke-linecap="round"/>
+                    <path d="M30 30 L40 15 L46 32Z" fill="#F16A50"/><path d="M90 30 L80 15 L74 32Z" fill="#F16A50"/>
+                  </svg>
+                </div>
+                <div class="card-bottom">
+                  <p class="card-name">Conversación Natural</p>
+                  <p class="card-sub">Practica diálogos con Bú el búho</p>
+                  <button class="card-cta" onclick="iniciarDialogoBu()">Comenzar</button>
+                </div>
+              </div>
+
+              <div class="teach-illustr-card card-blue">
+                <span class="card-badge card-time-badge">
+                  <svg class="clock-icon" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="9" fill="none" stroke="#233524" stroke-width="1.8"/>
+                    <path d="M12 3 L12 12 L17 15" fill="none" stroke="#233524" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M8 3 L12 3 L16 7" fill="none" stroke="#233524" stroke-width="1.8" stroke-linecap="round" opacity="0.3"/>
+                  </svg>
+                  10 min
+                </span>
+                <div class="card-illustration">
+                  <svg viewBox="0 0 120 120">
+                    <path d="M30 30 L50 18 L70 30 L82 50 L70 70 L50 82 L30 70 L18 50 Z" fill="#7CC142"/>
+                    <path d="M45 30 L60 20 L75 30" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+                    <path d="M50 45 L50 75" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+                    <path d="M40 55 L60 55" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+                    <path d="M70 45 L70 75" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity="0.7"/>
+                  </svg>
+                </div>
+                <div class="card-bottom">
+                  <p class="card-name">Pronunciación Básica</p>
+                  <p class="card-sub">Aprende a sonar cada letra</p>
+                  <button class="card-cta" onclick="mostrarPronunciacion()">Comenzar</button>
+                </div>
+              </div>
+
+              <div class="teach-illustr-card card-red">
+                <span class="card-ribbon">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle; margin-right:4px;">
+                    <path d="M12 2C8.5 6 7 8.5 7 11a5 5 0 0 0 10 0c0-2.5-1.5-5-5-9z"/>
+                    <path d="M12 22c-4-4-2-7 0-9 2 2 4 5 0 9z" />
+                  </svg>
+                  Popular
+                </span>
+                <span class="card-badge card-time-badge">
+                  <svg class="clock-icon" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="9" fill="none" stroke="#233524" stroke-width="1.8"/>
+                    <path d="M12 3 L12 12 L17 15" fill="none" stroke="#233524" stroke-width="1.8" stroke-linecap="round"/>
+                  </svg>
+                  5 min
+                </span>
+                <div class="card-illustration">
+                  <svg viewBox="0 0 120 120">
+                    <circle cx="60" cy="50" r="26" fill="#8B6B4A"/>
+                    <circle cx="46" cy="44" r="5" fill="#fff"/><circle cx="74" cy="44" r="5" fill="#fff"/>
+                    <circle cx="46" cy="44" r="2.5" fill="#233524"/><circle cx="74" cy="44" r="2.5" fill="#233524"/>
+                    <ellipse cx="60" cy="58" rx="8" ry="5" fill="#fff"/>
+                    <rect x="38" y="80" width="44" height="24" rx="6" fill="#F16A50"/>
+                    <ellipse cx="60" cy="80" rx="22" ry="7" fill="#F6AC2E"/>
+                  </svg>
+                </div>
+                <div class="card-bottom">
+                  <p class="card-name">Ritmo de Palabras</p>
+                  <p class="card-sub">Siente el compás al hablar</p>
+                  <button class="card-cta" onclick="mostrarRitmo()">Comenzar</button>
+                </div>
+              </div>
+
+              <div class="teach-illustr-card card-purple">
+                <span class="card-badge card-time-badge">
+                  <svg class="clock-icon" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="9" fill="none" stroke="#233524" stroke-width="1.8"/>
+                    <path d="M12 3 L12 12 L17 15" fill="none" stroke="#233524" stroke-width="1.8" stroke-linecap="round"/>
+                  </svg>
+                  12 min
+                </span>
+                <div class="card-illustration">
+                  <svg viewBox="0 0 120 120">
+                    <path d="M28 55 Q28 30 48 32 Q52 20 62 30 Q70 22 74 34 Q90 34 88 55 Q88 70 68 68 L68 78 L58 68 Q30 70 28 55Z" fill="#8B7FD1"/>
+                    <circle cx="48" cy="48" r="3" fill="#233524"/><circle cx="66" cy="48" r="3" fill="#233524"/>
+                    <path d="M30 60 Q40 55 44 62" fill="none" stroke="#fff" stroke-width="2"/>
+                    <circle cx="90" cy="72" r="3" fill="#8B7FD1"/><circle cx="98" cy="66" r="2" fill="#8B7FD1"/>
+                  </svg>
+                </div>
+                <div class="card-bottom">
+                  <p class="card-name">Diálogos Simples</p>
+                  <p class="card-sub">Conversa como un explorador</p>
+                  <button class="card-cta" onclick="mostrarDialogosSimples()">Comenzar</button>
+                </div>
+              </div>
+
+              <div class="teach-illustr-card card-green">
+                <span class="card-badge card-time-badge">
+                  <svg class="clock-icon" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="9" fill="none" stroke="#233524" stroke-width="1.8"/>
+                    <path d="M12 3 L12 12 L17 15" fill="none" stroke="#233524" stroke-width="1.8" stroke-linecap="round"/>
+                  </svg>
+                  8 min
+                </span>
+                <div class="card-illustration">
+                  <svg viewBox="0 0 120 120">
+                    <ellipse cx="30" cy="60" rx="16" ry="22" fill="#B9C4CC"/>
+                    <ellipse cx="90" cy="60" rx="16" ry="22" fill="#B9C4CC"/>
+                    <ellipse cx="60" cy="60" rx="30" ry="28" fill="#CFD8DE"/>
+                    <circle cx="50" cy="52" r="4" fill="#233524"/><circle cx="70" cy="52" r="4" fill="#233524"/>
+                    <path d="M60 62 Q56 78 50 84" stroke="#B9C4CC" stroke-width="8" fill="none" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <div class="card-bottom">
+                  <p class="card-name">Comprensión Auditiva</p>
+                  <p class="card-sub">Escucha con oído de detective</p>
+                  <button class="card-cta" onclick="mostrarAuditiva()">Comenzar</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="teach-challenge-banner">
+              <span class="challenge-emoji">⭐</span>
+              <div class="challenge-text">
+                <p class="challenge-title">Desafío del Día</p>
+                <p class="challenge-desc">Completa 3 lecciones para ganar tu estrella dorada</p>
+              </div>
+              <button class="teach-challenge-btn">Aceptar Reto</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-view" id="dialogo-bu-section">
+          <div class="content-toprow">
+            <button class="dlg-back-btn" onclick="volverAEnsenar()">← Volver</button>
+            <h1 class="title">Conversación Natural</h1>
+            <p class="subtitle">Practica diálogos con Bú el búho</p>
+          </div>
+
+          <div class="dlg-wrap">
+            <div class="dlg-progress">
+              <span class="dlg-dot active" data-step="0"></span>
+              <span class="dlg-dot" data-step="1"></span>
+              <span class="dlg-dot" data-step="2"></span>
+            </div>
+
+            <div class="dlg-stage">
+              <div class="dlg-owl-side">
+                <svg class="dlg-owl" viewBox="0 0 120 120">
+                  <circle cx="60" cy="55" r="34" fill="#F6AC2E"/>
+                  <circle cx="46" cy="48" r="10" fill="#fff"/><circle cx="74" cy="48" r="10" fill="#fff"/>
+                  <circle cx="46" cy="48" r="4" fill="#233524"/><circle cx="74" cy="48" r="4" fill="#233524"/>
+                  <path d="M50 66 Q60 74 70 66" stroke="#233524" stroke-width="3" fill="none" stroke-linecap="round"/>
+                  <path d="M30 30 L40 15 L46 32Z" fill="#F16A50"/><path d="M90 30 L80 15 L74 32Z" fill="#F16A50"/>
+                </svg>
+                <div class="dlg-bubble dlg-bubble-owl" id="dlgOwlLine">
+                  ¡Hola! Soy Bú 🦉 ¿Cómo te llamas?
+                </div>
+              </div>
+
+              <div class="dlg-options" id="dlgOptions">
+                <button class="dlg-option" data-correct="true">Me llamo Sofía</button>
+                <button class="dlg-option" data-correct="false">Tengo un perro</button>
+                <button class="dlg-option" data-correct="false">Es de color azul</button>
+              </div>
+
+              <div class="dlg-feedback" id="dlgFeedback"></div>
+            </div>
+
+            <button class="dlg-next-btn" id="dlgNextBtn" disabled>Siguiente</button>
+          </div>
+
+          <div class="dlg-celebration" id="dlgCelebration">
+            <svg class="dlg-star" viewBox="0 0 100 100"><path d="M50 5 L61 38 L96 38 L68 59 L79 92 L50 71 L21 92 L32 59 L4 38 L39 38Z" fill="#FFD835"/></svg>
+            <h2>¡Muy bien, campeón!</h2>
+            <p>Completaste la conversación con Bú el búho</p>
+            <button class="teach-start-btn" onclick="volverAEnsenar()">Volver a Enseñar</button>
+          </div>
+        </section>
+
+        <section class="section-view" id="dialogos-simples-section">
+          <div class="content-toprow">
+            <button class="dlg-back-btn" onclick="volverAEnsenar()">← Volver</button>
+            <h1 class="title">Diálogos Simples</h1>
+            <p class="subtitle">Conversa como un explorador</p>
+          </div>
+
+          <div class="exp-wrap">
+            <div class="exp-trail">
+              <svg class="exp-trail-svg" viewBox="0 0 400 60">
+                <path class="exp-stone" data-exp-stone="0" d="M20 30 L45 10 L70 30 L45 50Z"/>
+                <path class="exp-path-line" d="M45 30 L155 30" />
+                <path class="exp-stone" data-exp-stone="1" d="M155 30 L180 10 L205 30 L180 50Z"/>
+                <path class="exp-path-line" d="M180 30 L290 30" />
+                <path class="exp-stone" data-exp-stone="2" d="M290 30 L315 10 L340 30 L315 50Z"/>
+                <path class="exp-flag" d="M355 12 L355 48 M355 12 L378 20 L355 28Z"/>
+              </svg>
+            </div>
+
+            <div class="exp-stage" id="expStage">
+              <svg class="exp-mascot" viewBox="0 0 120 120">
+                <path class="ew-ear-l" d="M32 40 L22 12 L48 34Z"/>
+                <path class="ew-ear-r" d="M88 40 L98 12 L72 34Z"/>
+                <path class="ew-head" d="M60 30 L94 55 L82 92 L38 92 L26 55Z"/>
+                <path class="ew-hat" d="M30 48 L60 26 L90 48 L60 40Z"/>
+                <path class="ew-hat-band" d="M32 48 L88 48 L88 54 L32 54Z"/>
+                <path class="ew-eye-l" d="M46 62 L56 58 L56 66Z"/>
+                <path class="ew-eye-r" d="M74 62 L64 58 L64 66Z"/>
+                <path class="ew-snout" d="M50 76 L70 76 L60 92Z"/>
+              </svg>
+
+              <div class="exp-bubble" id="expLine">Hola explorador, ¿listo para partir al bosque?</div>
+              <div class="exp-options" id="expOptions"></div>
+              <div class="dlg-feedback" id="expFeedback"></div>
+            </div>
+
+            <button class="dlg-next-btn" id="expNextBtn" disabled>Siguiente</button>
+          </div>
+
+          <div class="dlg-celebration" id="expCelebration">
+            <svg class="exp-flag-final" viewBox="0 0 100 100">
+              <path d="M35 10 L35 90" stroke="#8B6B4A" stroke-width="6" stroke-linecap="round"/>
+              <path d="M35 12 L80 28 L35 44Z" fill="#F16A50"/>
+            </svg>
+            <h2>¡Llegaste a la meta, explorador!</h2>
+            <p>Completaste la travesía de diálogos con Explo el zorro</p>
+            <button class="teach-start-btn" onclick="volverAEnsenar()">Volver a Enseñar</button>
+          </div>
+        </section>
+
+        <section class="section-view" id="ritmo-section">
+          <div class="content-toprow">
+            <button class="dlg-back-btn" onclick="volverAEnsenar()">← Volver</button>
+            <h1 class="title">Ritmo de Palabras</h1>
+            <p class="subtitle">Cuenta las sílabas con el oído y el juego</p>
+          </div>
+
+          <div class="rit-wrap">
+            <div class="dlg-progress">
+              <span class="dlg-dot active" data-rit-step="0"></span>
+              <span class="dlg-dot" data-rit-step="1"></span>
+              <span class="dlg-dot" data-rit-step="2"></span>
+            </div>
+
+            <div class="rit-stage" id="ritStage">
+              <svg class="rit-mascot" viewBox="0 0 120 120">
+                <path class="rw-body" d="M40 100 L40 60 Q40 34 66 34 Q92 34 92 60 L92 100 Q66 112 40 100Z"/>
+                <path class="rw-beak" d="M92 60 L118 50 Q108 66 92 74Z"/>
+                <path class="rw-crest" d="M50 34 L58 14 L66 34Z"/>
+                <path class="rw-eye" d="M60 50 L70 46 L70 56 Z"/>
+                <path class="rw-wing" d="M46 70 L40 90 L58 84 Z"/>
+              </svg>
+
+              <div class="rit-word-display" id="ritWordDisplay">Casa</div>
+
+              <button type="button" class="rit-play-btn" id="ritPlayBtn" aria-label="Escuchar palabra">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#fff"/></svg>
+              </button>
+
+              <p class="rit-instruction">Escucha la palabra y elige cuántas sílabas tiene.</p>
+              <div class="rit-options" id="ritOptions"></div>
+              <div class="dlg-feedback" id="ritFeedback"></div>
+            </div>
+
+            <button type="button" class="dlg-next-btn" id="ritNextBtn" disabled>Siguiente</button>
+          </div>
+
+          <div class="dlg-celebration" id="ritCelebration">
+            <svg class="rit-star-wedge" viewBox="0 0 100 100">
+              <path d="M50 8 L58 42 L92 42 L64 60 L74 92 L50 72 L26 92 L36 60 L8 42 L42 42Z"/>
+            </svg>
+            <h2>¡Excelente ritmo!</h2>
+            <p>Contaste sílabas como un verdadero lingüista.</p>
+            <button class="teach-start-btn" onclick="volverAEnsenar()">Volver a Enseñar</button>
+          </div>
+        </section>
+
+        <section class="section-view" id="pronunciacion-section">
+          <div class="content-toprow">
+            <button class="dlg-back-btn" onclick="volverAEnsenar()">← Volver</button>
+            <h1 class="title">Pronunciación Básica</h1>
+            <p class="subtitle">Aprende a sonar cada letra</p>
+          </div>
+
+          <div class="pron-wrap">
+            <div class="dlg-progress">
+              <span class="dlg-dot active" data-pron-step="0"></span>
+              <span class="dlg-dot" data-pron-step="1"></span>
+              <span class="dlg-dot" data-pron-step="2"></span>
+            </div>
+
+            <div class="pron-stage" id="pronStage">
+              <svg class="pron-mascot" viewBox="0 0 120 120">
+                <ellipse cx="60" cy="65" rx="36" ry="26" fill="#7CC142"/>
+                <circle cx="42" cy="42" r="12" fill="#7CC142"/><circle cx="78" cy="42" r="12" fill="#7CC142"/>
+                <circle cx="42" cy="42" r="6" fill="#fff"/><circle cx="78" cy="42" r="6" fill="#fff"/>
+                <circle cx="42" cy="42" r="3" fill="#233524"/><circle cx="78" cy="42" r="3" fill="#233524"/>
+                <ellipse cx="60" cy="72" rx="14" ry="8" fill="#F16A50"/>
+              </svg>
+
+              <div class="pron-letter-box">
+                <span class="pron-letter" id="pronLetter">M</span>
+                <button class="pron-sound-btn" id="pronSoundBtn" aria-label="Escuchar sonido">
+                  <svg viewBox="0 0 24 24"><path d="M4 9v6h4l5 5V4L8 9H4z"/><path d="M16 8a5 5 0 0 1 0 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M18.5 5.5a9 9 0 0 1 0 13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </button>
+              </div>
+
+              <p class="pron-instruction">¿Qué palabra empieza con este sonido?</p>
+              <div class="pron-options" id="pronOptions"></div>
+              <div class="dlg-feedback" id="pronFeedback"></div>
+            </div>
+
+            <button class="dlg-next-btn" id="pronNextBtn" disabled>Siguiente</button>
+          </div>
+
+          <div class="dlg-celebration" id="pronCelebration">
+            <svg class="dlg-star" viewBox="0 0 100 100"><path d="M50 5 L61 38 L96 38 L68 59 L79 92 L50 71 L21 92 L32 59 L4 38 L39 38Z" fill="#FFD835"/></svg>
+            <h2>¡Excelente pronunciación!</h2>
+            <p>Aprendiste a sonar 3 letras con Coco la rana</p>
+            <button class="teach-start-btn" onclick="volverAEnsenar()">Volver a Enseñar</button>
+          </div>
+        </section>
+
+        <section class="section-view" id="auditiva-section">
+          <div class="content-toprow">
+            <button class="dlg-back-btn" onclick="volverAEnsenar()">← Volver</button>
+            <h1 class="title">Comprensión Auditiva</h1>
+            <p class="subtitle">Escucha con oído de detective</p>
+          </div>
+
+          <div class="aud-wrap">
+            <div class="dlg-progress">
+              <span class="dlg-dot active" data-aud-step="0"></span>
+              <span class="dlg-dot" data-aud-step="1"></span>
+              <span class="dlg-dot" data-aud-step="2"></span>
+            </div>
+
+            <div class="aud-stage" id="audStage">
+              <svg class="aud-mascot" viewBox="0 0 120 120">
+                <path class="aw-ear-l" d="M34 30 L14 14 L38 44Z"/>
+                <path class="aw-ear-r" d="M86 30 L106 14 L82 44Z"/>
+                <path class="aw-head" d="M60 34 L92 58 L80 94 L40 94 L28 58Z"/>
+                <path class="aw-hat" d="M32 46 L60 24 L88 46 L60 38Z"/>
+                <circle class="aw-eye-l" cx="49" cy="60" r="4"/>
+                <circle class="aw-eye-r" cx="71" cy="60" r="4"/>
+                <path class="aw-snout" d="M52 76 L68 76 L60 90Z"/>
+                <circle class="aw-lens" cx="96" cy="78" r="12"/>
+                <path class="aw-handle" d="M104 87 L116 100 L110 106 L98 93Z"/>
+              </svg>
+
+              <div class="aud-bubble" id="audLine">Escucha con atención este sonido misterioso...</div>
+
+              <button class="aud-play-btn" id="audPlayBtn" aria-label="Reproducir sonido">
+                <svg viewBox="0 0 60 60">
+                  <path class="aud-play-ring" d="M30 4 A26 26 0 0 1 30 56 A26 26 0 0 1 30 4Z"/>
+                  <path class="aud-play-wedge" d="M24 20 L42 30 L24 40Z"/>
+                </svg>
+              </button>
+              <p class="aud-instruction">Toca la lupa para escuchar la pista</p>
+
+              <audio id="audPlayer" preload="none">
+                <source id="audSource" src="" type="audio/webm">
+                Tu navegador no soporta reproducción de audio.
+              </audio>
+
+              <p class="aud-instruction">¿Qué animal hizo este sonido?</p>
+              <div class="aud-options" id="audOptions"></div>
+
+              <div class="dlg-feedback" id="audFeedback"></div>
+            </div>
+
+            <button class="dlg-next-btn" id="audNextBtn" disabled>Siguiente</button>
+          </div>
+
+          <div class="dlg-celebration" id="audCelebration">
+            <svg class="aud-badge-final" viewBox="0 0 100 100">
+              <path d="M50 6 L70 20 L70 50 L50 70 L30 50 L30 20Z" fill="#F6AC2E"/>
+              <path d="M40 45 L48 55 L64 35" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <h2>¡Caso resuelto, detective!</h2>
+            <p>Identificaste correctamente los sonidos con Miga la ratona</p>
+            <button class="teach-start-btn" onclick="volverAEnsenar()">Volver a Enseñar</button>
+          </div>
+        </section>
+
+        <!-- SECCIÓN EVALUAR -->
+        <section class="section-view" id="evaluar-section">
+          <div class="content-toprow">
+            <h1 class="title">Evaluar</h1>
+            <p class="subtitle">Revisa resultados y desempeño de estudiantes</p>
+          </div>
+
+          <div class="summary-row">
+            <div class="panel overall-panel">
+              <div class="stat-block">
+                <p class="stat-label">Evaluaciones<br>Completadas</p>
+                <p class="stat-value" id="eval-completed-count">--</p>
+                <p class="stat-foot">Este mes</p>
+              </div>
+
+              <div class="stat-block">
+                <p class="stat-label">Estudiantes<br>Evaluados</p>
+                <p class="stat-value" id="eval-students-count">--</p>
+                <p class="stat-foot" id="eval-students-foot">De -- total</p>
+              </div>
+
+              <svg class="widget trophy-widget" viewBox="0 0 140 140">
+                <path class="wedge wedge-cup-l" d="M70 70 L30 30 A56 56 0 0 0 70 126 Z"/>
+                <path class="wedge wedge-cup-r" d="M70 70 L110 30 A56 56 0 0 1 70 126 Z"/>
+                <path class="wedge wedge-cup-t" d="M70 70 L30 30 A56 56 0 0 1 110 30 Z"/>
+                <circle class="face-plate" cx="70" cy="52" r="17"/>
+                <path class="handle handle-l" d="M28 55 a16 16 0 0 0 0 32"/>
+                <path class="handle handle-r" d="M112 55 a16 16 0 0 1 0 32"/>
+                <rect class="stem" x="64" y="100" width="12" height="14" rx="2"/>
+                <rect class="base" x="46" y="114" width="48" height="10" rx="4"/>
+              </svg>
+            </div>
+
+            <div class="game-card game-forest">
+              <div class="game-icon-badge">
+                <svg viewBox="0 0 60 60"><path d="M20 20L40 40M40 20L20 40" stroke-width="4" fill="none"/></svg>
+              </div>
+              <p class="game-count">Nueva</p>
+              <p class="game-name">Evaluación<br>Rápida</p>
+              <p class="game-foot">Ad-hoc</p>
+            </div>
+
+            <div class="game-card game-island">
+              <div class="game-icon-badge">
+                <svg viewBox="0 0 60 60"><rect x="10" y="15" width="40" height="30" rx="3"/><line x1="20" y1="20" x2="20" y2="40"/><line x1="30" y1="20" x2="30" y2="40"/><line x1="40" y1="20" x2="40" y2="40"/></svg>
+              </div>
+              <p class="game-count">Pruebas</p>
+              <p class="game-name">Evaluaciones<br>Programadas</p>
+              <p class="game-foot">Formales</p>
+            </div>
+
+            <div class="game-card game-wizard">
+              <div class="game-icon-badge">
+                <svg viewBox="0 0 60 60"><path d="M30 10L50 50H10Z"/><circle cx="30" cy="30" r="4" fill="white"/></svg>
+              </div>
+              <p class="game-count">Reportes</p>
+              <p class="game-name">Análisis de<br>Resultados</p>
+              <p class="game-foot">Detallados</p>
+            </div>
+          </div>
+
+          <section class="table-section">
+            <div class="table-header-row">
+              <h2>Evaluaciones por Estudiante</h2>
+            </div>
+
+            <div class="table-wrap">
+              <div class="t-row t-head">
+                <span class="t-name">Estudiante</span>
+                <span>Total Evaluaciones</span>
+                <span>Promedio General</span>
+                <span>Fortalezas</span>
+                <span>A Mejorar</span>
+              </div>
+
+              <div class="t-row row-green" data-student="Sebastián Coya">
+                <span class="t-name"><span class="mini-avatar ma1"></span>Sebastián Coya</span>
+                <span class="eval-count">--</span>
+                <span class="score-cell"><span class="score-bar bar-green" style="width:0%"></span><span class="score-num">--</span></span>
+                <span><span class="chip chip-green eval-strengths">--</span></span>
+                <span><span class="chip chip-red eval-weaknesses">--</span></span>
+              </div>
+
+              <div class="t-row row-yellow" data-student="Valentina Ruiz">
+                <span class="t-name"><span class="mini-avatar ma2"></span>Valentina Ruiz</span>
+                <span class="eval-count">--</span>
+                <span class="score-cell"><span class="score-bar bar-yellow" style="width:0%"></span><span class="score-num">--</span></span>
+                <span><span class="chip chip-green eval-strengths">--</span></span>
+                <span><span class="chip chip-red eval-weaknesses">--</span></span>
+              </div>
+
+              <div class="t-row row-red" data-student="Mateo Ríos">
+                <span class="t-name"><span class="mini-avatar ma3"></span>Mateo Ríos</span>
+                <span class="eval-count">--</span>
+                <span class="score-cell"><span class="score-bar bar-red" style="width:0%"></span><span class="score-num">--</span></span>
+                <span><span class="chip chip-green eval-strengths">--</span></span>
+                <span><span class="chip chip-red eval-weaknesses">--</span></span>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <!-- SECCIÓN MONITOREAR -->
+        <section class="section-view" id="monitorear-section">
+          <div class="content-toprow">
+            <h1 class="title">Monitorear</h1>
+            <p class="subtitle">Supervisa el progreso en tiempo real</p>
+          </div>
+
+          <div class="summary-row">
+            <div class="panel overall-panel">
+              <div class="stat-block">
+                <p class="stat-label">Tasa de<br>Completación</p>
+                <p class="stat-value" id="monitor-completion-rate">--</p>
+                <p class="stat-foot">Estudiantes activos</p>
+              </div>
+
+              <div class="stat-block">
+                <p class="stat-label">Tiempo<br>Promedio</p>
+                <p class="stat-value" id="monitor-average-time">--</p>
+                <p class="stat-foot">Por sesión</p>
+              </div>
+
+              <svg class="widget bubbles-widget" viewBox="0 0 140 140">
+                <circle class="bub b1" cx="70" cy="70" r="30"/>
+                <circle class="bub b2" cx="30" cy="45" r="12"/>
+                <circle class="bub b3" cx="108" cy="40" r="9"/>
+                <circle class="bub b4" cx="112" cy="80" r="14"/>
+                <circle class="bub b5" cx="35" cy="95" r="10"/>
+                <circle class="bub b6" cx="65" cy="115" r="8"/>
+                <circle class="bub b7" cx="95" cy="112" r="6"/>
+                <circle class="bub b8" cx="20" cy="70" r="6"/>
+              </svg>
+            </div>
+
+            <div class="game-card game-forest">
+              <div class="game-icon-badge">
+                <svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="20"/><path d="M30 15V45M15 30H45" stroke-width="3" stroke="currentColor" fill="none"/></svg>
+              </div>
+              <p class="game-count">En Vivo</p>
+              <p class="game-name">Actividad<br>Actual</p>
+              <p class="game-foot">Ahora</p>
+            </div>
+
+            <div class="game-card game-island">
+              <div class="game-icon-badge">
+                <svg viewBox="0 0 60 60"><path d="M10 15L30 10L50 15V45H10Z"/><circle cx="20" cy="35" r="2"/><circle cx="30" cy="30" r="2"/><circle cx="40" cy="35" r="2"/></svg>
+              </div>
+              <p class="game-count">Alertas</p>
+              <p class="game-name">Estudiantes<br>Rezagados</p>
+              <p class="game-foot">Requieren ayuda</p>
+            </div>
+
+            <div class="game-card game-wizard">
+              <div class="game-icon-badge">
+                <svg viewBox="0 0 60 60"><path d="M30 15L55 50H5Z"/><line x1="15" y1="40" x2="45" y2="40" stroke-width="2" stroke="currentColor"/></svg>
+              </div>
+              <p class="game-count">Gráficos</p>
+              <p class="game-name">Tendencias<br>Semanales</p>
+              <p class="game-foot">Analytics</p>
+            </div>
+          </div>
+
+          <section class="table-section">
+            <div class="table-header-row">
+              <h2>Actividad en Tiempo Real</h2>
+            </div>
+
+            <div class="table-wrap">
+              <div class="t-row t-head">
+                <span class="t-name">Estudiante</span>
+                <span>Estado Actual</span>
+                <span>Tiempo en Juego</span>
+                <span>Nivel Actual</span>
+                <span>Última Actividad</span>
+              </div>
+
+              <div class="t-row row-green" data-student="Sebastián Coya">
+                <span class="t-name"><span class="mini-avatar ma1"></span>Sebastián Coya</span>
+                <span><span class="chip chip-green monitor-status">--</span></span>
+                <span class="monitor-time">--</span>
+                <span class="monitor-level">--</span>
+                <span class="monitor-last">--</span>
+              </div>
+
+              <div class="t-row row-yellow" data-student="Valentina Ruiz">
+                <span class="t-name"><span class="mini-avatar ma2"></span>Valentina Ruiz</span>
+                <span><span class="chip chip-yellow monitor-status">--</span></span>
+                <span class="monitor-time">--</span>
+                <span class="monitor-level">--</span>
+                <span class="monitor-last">--</span>
+              </div>
+
+              <div class="t-row row-red" data-student="Mateo Ríos">
+                <span class="t-name"><span class="mini-avatar ma3"></span>Mateo Ríos</span>
+                <span><span class="chip chip-red monitor-status">--</span></span>
+                <span class="monitor-time">--</span>
+                <span class="monitor-level">--</span>
+                <span class="monitor-last">--</span>
+              </div>
+            </div>
+          </section>
+        </section>
+
+      <!-- MODAL PERFIL -->
+      <div class="modal-overlay" id="profileModal">
+        <div class="modal-content profile-modal">
+          <div class="modal-header">
+            <h2>Mi Perfil</h2>
+            <button class="close-btn" id="closeProfileModal">
+              <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
+            </button>
+          </div>
+
+          <div class="profile-form">
+            <div class="profile-photo-section">
+              <div class="profile-photo" id="profilePhotoPreview"></div>
+              <div class="photo-actions">
+                <label class="upload-btn">
+                  <svg viewBox="0 0 24 24"><path d="M4 20h16V8h-3V4H4v16zm8-12h4v4h-4V8z"/></svg>
+                  Cambiar Foto
+                  <input type="file" id="photoInput" accept="image/*" style="display:none;">
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="nameInput">Nombre Completo</label>
+              <input type="text" id="nameInput" placeholder="Tu nombre" maxlength="50">
+            </div>
+
+            <div class="form-group">
+              <label for="emailInput">Email (opcional)</label>
+              <input type="email" id="emailInput" placeholder="tu@email.com">
+            </div>
+
+            <div class="modal-actions">
+              <button class="btn btn-secondary" id="cancelProfileBtn">Cancelar</button>
+              <button class="btn btn-primary" id="saveProfileBtn">Guardar Cambios</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      </main>
+    </div>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
